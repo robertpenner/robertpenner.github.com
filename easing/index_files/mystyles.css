@@ -1,0 +1,31 @@
+a:link {
+	text-decoration: none;
+	color: #9797FF
+}
+a:visited {
+	text-decoration: none;
+	color: #7777FF
+}
+a:hover {
+	text-decoration: underline;
+	color: #FFFFFF
+}
+
+.myhide {display: none}
+.credit {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 6pt; color: #9999FF}
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	color: #FFF;
+	font-size: 16px;
+	background-color: #000;
+}
+ul {
+	line-height: 120%;	
+}
+h1 {
+	font-size: 22px;
+}
+h2 {
+	font-size: 18px;
+}
