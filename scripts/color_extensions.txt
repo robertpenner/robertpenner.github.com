@@ -1,0 +1,71 @@
+/*  Lots of fun with colors. Read the comments and 
+    figure out how to use the code. Look up the Color
+    object in the Actionscript Dictionary if
+    necessary (or just do it anyway). =]  Enjoy.
+                             -- Robert Penner
+                                www.robertpenner.com
+                                June 2001
+*/
+
+
+// tint an object with a color just like Effect panel
+// r, g, b between 0 and 255; amount between 0 and 100
+Color.prototype.setTint = function (r, g, b, amount) {
+	var trans = new Object();
+	trans.ra = trans.ga = trans.ba = 100 - amount;
+	var ratio = amount / 100;
+	trans.rb = r * ratio;
+	trans.gb = g * ratio;
+	trans.bb = b * ratio;
+	this.setTransform(trans);
+} // Robert Penner June 2001 - www.robertpenner.com
+
+
+// brighten an object just like Effect panel
+// bright between 0 and 100
+Color.prototype.setBrightness = function (bright) {
+	var offset = 0;
+	if (bright > 0) offset = 256 * (bright / 100);
+	var trans = new Object();
+	trans.ra = trans.ga = trans.ba = 100 - Math.abs(bright);
+	trans.rb = trans.gb = trans.bb = offset;
+	this.setTransform(trans);
+} //rp
+
+
+// push an object's colors around - interesting fx
+// r, g, b between -255 and 255
+Color.prototype.setTintOffset = function (r, g, b) {
+	var trans = {rb:r, gb:g, bb:b};
+	this.setTransform(trans);
+} //rp
+
+
+// push an object's brightness around - fx like eneri.net
+// offset between -255 and 255
+Color.prototype.setBrightOffset = function (offset) {
+	var trans = new Object();
+	trans.rb = trans.gb = trans.bb = offset;
+	this.setTransform(trans);
+} //rp
+
+
+// reset the color object to normal
+Color.prototype.reset = function () {
+	var trans = {ra:100, ga:100, ba:100, rb:0, gb:0, bb:0};
+	this.setTransform(trans);
+} //rp
+
+
+// create a negative image - invert all colors
+Color.prototype.negative = function () {
+	var trans = {ra:-100, ga:-100, ba:-100, rb:255, gb:255, bb:255};
+	this.setTransform(trans);
+} //rp
+
+
+// set red, green, and blue with normal numbers
+// r, g, b between 0 and 255 
+Color.prototype.setRGB2 = function (r, g, b) {
+	this.setRGB(r << 16 | g << 8 | b);
+} // Branden Hall - www.figleaf.com

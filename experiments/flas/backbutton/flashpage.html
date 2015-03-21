@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<TITLE>Back Button in Flash</TITLE>
+<link rel="stylesheet" href="../../../mystyles.css">
+<script language="JavaScript">
+
+//revised May 9, 2001
+//putting the function on the main Flash page works much better
+//easier to avoid bugs and update
+function setPage(newPage) {
+
+	//check if Flash object exists
+	if (window.document.mymovie) {
+		//set page variable in _root timeline of Flash movie
+		window.document.mymovie.SetVariable("page", newPage);
+	}
+}
+
+</script>
+
+</HEAD>
+<BODY bgcolor="#000000" text="#FFFFFF">
+
+<!--IMPORTANT--note the additions:
+OBJECT: id="mymovie"
+EMBED: NAME=mymovie, swLiveConnect=true
+-->
+
+<p><OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ WIDTH=400 HEIGHT=300 id="mymovie">
+    <PARAM NAME=movie VALUE="backbutton.swf">
+    <PARAM NAME=quality VALUE=high>
+    <PARAM NAME=bgcolor VALUE=#000000>
+    <EMBED src="backbutton.swf" quality=high bgcolor=#000000  WIDTH=400 HEIGHT=300 NAME=mymovie
+ swLiveConnect=true
+ TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+    </EMBED>
+  </OBJECT> </p>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="../flas/backbutton.zip" target="_parent">download
+  the source files</a><br>
+  </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="backbutton_code.html" target="_parent">what's
+  going on behind the scenes?</a><br>
+  </font></p>
+</BODY>
+</HTML>

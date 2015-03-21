@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="javascript">
+<!--
+//----- getArgs()
+// function to extract parmeters passed via the GET method
+//
+function getArgs() {
+	var args = new Object();
+	var query = location.search.substring(1);
+	var pairs = query.split("&");
+	for(var i=0; i<pairs.length; i++) {
+		var pos = pairs[i].indexOf('=');
+		if(pos==-1) continue;
+		var argname = pairs[i].substring(0,pos);
+		var value = pairs[i].substring(pos+1);
+		args[argname] = unescape(value);
+	}
+
+	return args;
+}
+
+//----- changePage()
+// Tells the flash movie in the FLASHFRAME frame to change pages
+//
+function changePage() {
+	//----- Grab the page number from the sent GET parameter
+	var args  = getArgs();
+	var page  = (args["page"]==null) ? 1 : args["page"];
+	var title = (args["title"]==null) ? 'page ' + String(page) : args["title"];
+
+	//----- Print the page title to hidden frame and parent frameset
+	document.write('<title>' + title + '</title>');
+	parent.document.title = title;
+
+	//----- DEBUG OUTPUT
+	document.write('curPage: ' + page);
+
+	//----- Tell flash movie in main content frame to set the curPage' variable
+	parent.FLASHFRAME.document.FLASHCONTENT.SetVariable("curPage", page);
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+</body>
+<script>changePage();</script>
+</html>

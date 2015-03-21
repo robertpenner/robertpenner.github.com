@@ -1,0 +1,6 @@
+For use with Object Tag: <PARAM NAME=FlashVars VALUE="foo=boo&blag=Hello%20World&paragraph=first+line%0Dsecond+line">
+
+For use with Embed Tag: <EMBED src="display.swf" ... 
+
+FlashVars="foo=boo&blag=Hello%20World&paragraph=first+line%0Dsecond+line"> </EMBED> 
+

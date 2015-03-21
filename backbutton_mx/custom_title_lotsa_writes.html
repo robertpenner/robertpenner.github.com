@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+
+
+<script language="JavaScript">
+
+// parse URL-encoded string into properties of an object
+function parseVars (str) {
+	var item;
+	var data = {};
+	var pairs = str.split ("&");
+	var i = pairs.length;
+	while (i--) {
+		item = pairs[i].split ("=");
+		data[item[0]] = item[1];
+	}
+	return data;
+}
+
+// remove the question mark
+var query = location.search.slice (1);
+// parse variables into an object
+queryVars = parseVars (query);
+
+document.write ("<title>" + queryVars.title + "</title>");
+</script>
+
+
+
+</HEAD>
+<BODY bgcolor="#FFFFFF">
+
+<script language="JavaScript">
+
+document.write (
+	'<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+	 codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+	 WIDTH="200" HEIGHT="100" id="history_node" ALIGN="">'
+);
+
+document.write ( '<PARAM NAME=movie VALUE="history_node.swf?page="' + queryVars.page + '>' );
+
+document.write ( '<PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF>' );
+
+document.write ( '<EMBED src="history_node.swf?page="' + queryVars.page + '>' );
+
+document.write (
+	'quality=high bgcolor=#FFFFFF  WIDTH="200" HEIGHT="100" NAME="history_node" ALIGN=""
+	TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+	</OBJECT>'
+);
+
+</script>
+
+</BODY>
+</HTML>

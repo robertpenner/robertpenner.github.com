@@ -1,0 +1,15 @@
+a:link {  text-decoration: none; color: #9999FF}
+a:visited {  text-decoration: none; color: #6666FF}
+a:hover {  text-decoration: underline; color: #FFFFFF}
+
+BODY
+{scrollbar-face-color: #C0C0D0;
+scrollbar-shadow-color: #000000;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-3dlight-color: #FFFFFF;
+scrollbar-darkshadow-color: #000000;
+scrollbar-track-color: #000000;
+scrollbar-arrow-color: #FFFFFF}
+.myhide {display: none}
+.credit {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 6pt; color: #9999FF}
+

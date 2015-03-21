@@ -1,0 +1,186 @@
+/*   
+	Easing Equations v1.2
+	March 11, 2002
+
+	Tweening equations of every variety.
+
+	Robert Penner
+	www.robertpenner.com
+	
+	Changes:
+	1.2
+	- inline optimizations (changing t and multiplying in one step)--thanks to Tatsuo Kato for the idea
+	
+*/
+     
+
+// simple linear tweening - no easing
+// t: current time, b: beginning value, c: change in value, d: duration
+Math.linearTween = function (t, b, c, d) {
+	return c*t/d + b;
+};
+
+ ///////////// QUADRATIC EASING: x^2 ///////////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+// quadratic easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in value, d: duration
+// t and d can be in frames or seconds/milliseconds
+Math.easeInQuad = function (t, b, c, d) {
+	return c*(t/=d)*t + b;
+};
+
+// quadratic easing out - decelerating to zero velocity
+Math.easeOutQuad = function (t, b, c, d) {
+	return -c*(t/=d)*(t-2) + b;
+};
+
+// quadratic easing in/out - acceleration until halfway, then deceleration
+Math.easeInOutQuad = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2*t*t + b;
+	return -c/2 * ((--t)*(t-2) - 1) + b;
+};
+
+
+ ///////////// CUBIC EASING: x^3 ///////////////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+// cubic easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in value, d: duration
+// t and d can be frames or seconds/milliseconds
+Math.easeInCubic = function (t, b, c, d) {
+	return c*(t/=d)*t*t + b;
+};
+
+// cubic easing out - decelerating to zero velocity
+Math.easeOutCubic = function (t, b, c, d) {
+	return c*((t=t/d-1)*t*t + 1) + b;
+};
+
+// cubic easing in/out - acceleration until halfway, then deceleration
+Math.easeInOutCubic = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2*t*t*t + b;
+	return c/2*((t-=2)*t*t + 2) + b;
+};
+
+
+ ///////////// QUARTIC EASING: x^4 /////////////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+// quartic easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in value, d: duration
+// t and d can be frames or seconds/milliseconds
+Math.easeInQuart = function (t, b, c, d) {
+	return c*(t/=d)*t*t*t + b;
+};
+
+// quartic easing out - decelerating to zero velocity
+Math.easeOutQuart = function (t, b, c, d) {
+	return -c * ((t=t/d-1)*t*t*t - 1) + b;
+};
+
+// quartic easing in/out - acceleration until halfway, then deceleration
+Math.easeInOutQuart = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+	return -c/2 * ((t-=2)*t*t*t - 2) + b;
+};
+
+
+ ///////////// QUINTIC EASING: x^5  ////////////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+// quintic easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in value, d: duration
+// t and d can be frames or seconds/milliseconds
+Math.easeInQuint = function (t, b, c, d) {
+	return c*(t/=d)*t*t*t*t + b;
+};
+
+// quintic easing out - decelerating to zero velocity
+Math.easeOutQuint = function (t, b, c, d) {
+	return c*((t=t/d-1)*t*t*t*t + 1) + b;
+};
+
+// quintic easing in/out - acceleration until halfway, then deceleration
+Math.easeInOutQuint = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+	return c/2*((t-=2)*t*t*t*t + 2) + b;
+};
+
+
+
+ ///////////// SINUSOIDAL EASING: sin(x) ///////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+
+// sinusoidal easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in position, d: duration
+Math.easeInSine = function (t, b, c, d) {
+	return c * (1 - Math.cos(t/d * (Math.PI/2))) + b;
+};
+
+// sinusoidal easing out - decelerating to zero velocity
+Math.easeOutSine = function (t, b, c, d) {
+	return c * Math.sin(t/d * (Math.PI/2)) + b;
+};
+
+// sinusoidal easing in/out - accelerating until halfway, then decelerating
+Math.easeInOutSine = function (t, b, c, d) {
+    return c/2 * (1 - Math.cos(t/d * Math.PI)) + b;
+};
+
+
+ ///////////// EXPONENTIAL EASING: e^x /////////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+/*
+------- new exponential equations Nov. 28, 2001 -----------
+        These are mathematically more consistent
+        and they execute faster.
+*/
+
+
+// exponential easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in position, d: duration
+Math.easeInExpo = function (t, b, c, d) {
+	return c * Math.pow(2, 10 * (t/d - 1)) + b;
+};
+
+// exponential easing out - decelerating to zero velocity
+Math.easeOutExpo = function (t, b, c, d) {
+	return c * (-Math.pow(2, -10 * t/d) + 1) + b;
+};
+
+// exponential easing in/out - accelerating until halfway, then decelerating
+Math.easeInOutExpo = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+	return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+};
+
+
+ /////////// CIRCULAR EASING: sqrt(1-x^2) //////////////
+//// Robert Penner - Sept. 2001 - robertpenner.com ////
+
+// circular easing in - accelerating from zero velocity
+// t: current time, b: beginning value, c: change in position, d: duration
+Math.easeInCirc = function (t, b, c, d) {
+	return c * (1 - Math.sqrt(1 - (t/=d)*t)) + b;
+};
+
+// circular easing out - decelerating to zero velocity
+Math.easeOutCirc = function (t, b, c, d) {
+	return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+};
+
+// circular easing in/out - acceleration until halfway, then deceleration
+Math.easeInOutCirc = function (t, b, c, d) {
+	if ((t/=d/2) < 1) return c/2 * (1 - Math.sqrt(1 - t*t)) + b;
+	return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+};
+
+
+
+
+
+
+
