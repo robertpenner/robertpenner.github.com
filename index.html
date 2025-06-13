@@ -1,8 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta HTTP-EQUIV="REFRESH" content="0; url=https://www.linkedin.com/in/robertpenner">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robert Penner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #E0E0E0;
+      --accent-color: #00ADEF;
+      --font-family: 'Inter', sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      background: linear-gradient(135deg, #0e0e0e, #1c1c1c);
+      color: var(--text-color);
+      font-family: var(--font-family);
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      padding: 2rem;
+      animation: fadeIn 1.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px rgba(0, 173, 239, 0.15);
+    }
+    p.tagline {
+      font-size: 1.25rem;
+      font-weight: 600;
+      opacity: 0.9;
+      margin-bottom: 1.25rem;
+    }
+    .highlights {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .highlights a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .highlights a:hover {
+      color: #00cfff;
+    }
+    .cta {
+      text-decoration: none;
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0, 173, 239, 0.4);
+      transition: all 0.3s ease;
+    }
+    .cta:hover {
+      background-color: #00c7ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 173, 239, 0.6);
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Robert Penner</h1>
+    <p class="tagline">Principal UX Engineer at Microsoft · Creator of the Penner Easing Functions</p>
+    <div class="highlights">
+      Author of <em>Robert Penner’s Programming Macromedia Flash MX</em> 
+      (<a href="https://www.amazon.com/Robert-Penners-Programming-Macromedia-Flash/dp/0072223561/" target="_blank" rel="noopener">Amazon</a>)
+    </div>
+    <a class="cta" href="https://www.linkedin.com/in/robertpenner/" target="_blank" rel="noopener">View LinkedIn Profile</a>
+  </div>
 </body>
 </html>
